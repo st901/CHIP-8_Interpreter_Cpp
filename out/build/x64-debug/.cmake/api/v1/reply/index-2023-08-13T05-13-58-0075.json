@@ -18,9 +18,9 @@
 			"isDirty" : false,
 			"major" : 3,
 			"minor" : 26,
-			"patch" : 0,
-			"string" : "3.26.0-msvc3",
-			"suffix" : "msvc3"
+			"patch" : 4,
+			"string" : "3.26.4-msvc4",
+			"suffix" : "msvc4"
 		}
 	},
 	"objects" : 
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-b07d41d596f223a35e3a.json",
+			"jsonFile" : "cache-v2-d1ad9eaf030e07b646a5.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-24220b77338b2dc82a56.json",
+			"jsonFile" : "cmakeFiles-v1-cfd8cb5a4061456ce691.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -53,7 +53,7 @@
 			}
 		},
 		{
-			"jsonFile" : "toolchains-v1-d26031e098c242b71e16.json",
+			"jsonFile" : "toolchains-v1-c190f694027744f0555a.json",
 			"kind" : "toolchains",
 			"version" : 
 			{
@@ -90,7 +90,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-b07d41d596f223a35e3a.json",
+						"jsonFile" : "cache-v2-d1ad9eaf030e07b646a5.json",
 						"kind" : "cache",
 						"version" : 
 						{
@@ -99,7 +99,7 @@
 						}
 					},
 					{
-						"jsonFile" : "cmakeFiles-v1-24220b77338b2dc82a56.json",
+						"jsonFile" : "cmakeFiles-v1-cfd8cb5a4061456ce691.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{
@@ -117,7 +117,7 @@
 						}
 					},
 					{
-						"jsonFile" : "toolchains-v1-d26031e098c242b71e16.json",
+						"jsonFile" : "toolchains-v1-c190f694027744f0555a.json",
 						"kind" : "toolchains",
 						"version" : 
 						{

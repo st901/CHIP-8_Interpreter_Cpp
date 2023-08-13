@@ -441,3 +441,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# CHIP-8 Test Programs
+*.ch8
