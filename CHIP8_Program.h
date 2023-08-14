@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
+
 
 // Since I am not familiar with the CHIP-8, I am referencing "Cowgod's Chip-8 Technical Reference",
 	// which is very detailed despite it's age.
@@ -21,33 +23,33 @@
 	// the Range of an Unsigned Character is from 0-255, or 0x0 to 0xFF, which is incidentally 8 bits, or 1 byte, as above
 	// Technically this represents an ASCII value, but I will just use it exclusevly as I would an integer.
 
-static unsigned char memory[0x1000] = {};
+static unsigned char memory[0x1000] {0x00};
 
 // The Chip-8 has 16 8-bit all-purpose registers, and one 16-bit instruction register (which is functionally 12-bit)
 // Coincidentally the 8-bit registers are sequentially named, so I can similarly use an array to store the registers
 // Just as an Unsigned Char gives me a 8-bit range, an Unsigned Short Integer gives me a 16-bit range, perfect for the "I" register.
 
-static unsigned char v[0x10] = {};
-static unsigned short I_register = {};
+static unsigned char v[0x10] {0x00};
+static unsigned short I_register {0x000};
 
 // There are also two 8-bit registers for creating delay. Their values are both are reduced by one, 60 times a second, until they are Zero.
 	// The first is a Sound Timer. If non-zero, it will play a tone, typically of the interpreter's choice (so i get to pick).
 	// The other is the Delay Timer. This can be used by programs to create timing events, like Sleeping for 5 seconds or something.
 
-static unsigned char ST = {};
-static unsigned char DT = {};
+static unsigned char ST {0x00};
+static unsigned char DT {0x00};
 
 // The variable names are for my own reference, and are based on their names in the Cowgod CHIP-8 Reference.
 
 // Like many computers, there's also a Program Counter and Stack Pointer, 16-bit and 8-bit respectively.
 	// These are not used by programs, and technically shouldn't be referenced by them, but I'm not too worried, more power to you.
 
-static unsigned char SP = {};
-static unsigned short PC = {};
+static unsigned char SP {0xFF};
+static unsigned short PC {0x000};
 
 
 // When there is a Stack Pointer, there must also be a stack. I'll probably get by using a Vector, since they can be pushed and pulled from, and scale infinitely.
-static std::vector<unsigned short> theStack = {16, 0x000};
+static std::vector<unsigned short> theStack {};
 // Not that it matters too much, I made the Stack Pointer a Unsigned Char, so the Stack will only ever be as big as 256 entries
 // There's no risk of Stack Overflow in a compiler sense, since the Stack Pointer will loop back to zero. This will break the execution though...
 // The original Stack of the CHIP-8 is only ever supposed to go as high as 16, so technically the Stack Pointer could be as small as a Nybl.
@@ -170,4 +172,15 @@ const unsigned short FONT_START = {0x050}; // Apparently this is where most peop
 // I will use a 2D array of Booleans to represent these pixels, as well as whether they are enabled or disabled.
 // Just like an Array, the coordinates used by CHIP-8 programs start at 0,0 and continue to 63,31.
 
-static bool Display[64][32] = {};
+static bool Display[64][32] {false};
+
+// The CHIP-8 uses a Hexadecimal Keyboard, so keys 0-F. A key can be either Pressed or NotPressed, so an Array of Booleans makes for a good way to represent this.
+	// I'll make a pollKeys() function that updates the array, using the commonly used x123qweasdzc4rfv notation.
+	// that notation is specific to QWERTY and/or en-US keyboards, so using those specific keyLocations instead of polling the character on the key will keep it compatible with other keyboard types.
+
+static bool keyPressed[0x10] {false};
+static bool anyKeyPressed {false};
+
+void pollKeys();
+
+unsigned char randomByte();
