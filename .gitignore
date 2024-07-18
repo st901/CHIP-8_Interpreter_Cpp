@@ -444,3 +444,4 @@ FodyWeavers.xsd
 
 # CHIP-8 Test Programs
 *.ch8
+/out/build/x64-debug/.cmake
